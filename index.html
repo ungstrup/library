@@ -8,6 +8,37 @@
     <script src="js/script.js" defer></script>
 </head>
 <body>
-    
+    <h1 class="title">Books in your library</h1>
+    <div class="library"></div>
+    <div class="button-container">
+        <button class="new-book-btn btn">NEW BOOK</button>
+    </div>
+    <div>
+        <dialog class="new-book-dialog">
+            <p>Add a new book to your library:</p>
+            <form method="dialog">
+                <label for="book-title">Book title:
+                    <input type="text" name="book-title">
+                </label>
+                <label for="book-author">Author:
+                    <input type="text" name="book-author">
+                </label>
+                <label for="book-pages">Number of pages:
+                    <input type="text" name="book-pages">
+                </label>
+                <fieldset>
+                    <legend>Have you read the book?</legend>
+                    <div>
+                        <input type="radio" name="book-read" id="book-isread">
+                        <label for="book-isread">Yes</label>
+                        <input type="radio" name="book-read" id="book-notread">
+                        <label for="book-notread">No</label>
+                    </div>
+                </fieldset>
+                <button class="close-btn">Close</button>
+                <button class="add-btn">Add book</button>
+            </form>
+        </dialog>
+    </div>
 </body>
 </html>
