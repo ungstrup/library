@@ -1,3 +1,130 @@
+* {
+    color: #fff;
+
+    margin: 0px;
+}
+
+html {
+    background-color: #252525;
+}
+
 p {
     white-space: pre;
+}
+
+.head-container {
+    margin: 10px 20px;
+}
+
+.head-divider {
+    background-color: #585858;
+
+    height: 1px;
+    width: 100%;
+
+}
+
+.library {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+
+    width: 100%;
+
+    margin: 20px;
+
+}
+
+.book {
+    background-color: #16a34a;
+
+    border-radius: 5px;
+    padding: 15px;
+
+    line-height: 2em;
+
+    width: 200px;
+    aspect-ratio: 1 / 1.2;
+}
+
+.new-book-btn {
+    margin-top: 30px;
+    margin-left: 20px;
+    
+    max-width: 150px;
+    width: 30vw;
+    height: 5vh;
+
+    background-color: #2dd4bf;
+    border: none;
+    border-radius: 8px;
+}
+
+dialog {
+    background-color: #333333;
+
+    border: #585858 solid 1px;
+    border-radius: 8px;
+
+    width: 500px;
+
+    margin: auto;
+}
+
+dialog p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+label {
+    display: inline-block;
+    width: 200px;
+}
+
+input {
+    background-color: #d6d6d6;
+    border: none;
+    border-radius: 4px;
+
+    height: 20px;
+
+    padding-left: 5px;
+
+    color: #252525;
+}
+
+input[type="text"], input[type="number"] {
+    width: 300px;
+}
+
+form {
+    margin-top: 20px;
+
+    display: grid;
+    gap: 10px;
+}
+
+.form-btns {
+    justify-self: end;
+}
+
+.form-btns button {
+    height: 30px;
+    width: 100px;
+
+    border-radius: 7px;
+
+    font-weight: bold;
+}
+
+.add-btn {
+    background-color: #2dd4bf;
+
+    border: none;
+}
+
+.close-btn {
+    background-color: #333333;
+
+    border: #585858 solid 1px;
 }

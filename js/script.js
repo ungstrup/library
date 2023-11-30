@@ -1,7 +1,10 @@
-const myLibrary = [{title: "The Hobbit", author: "J.R.R. Tolkien", pages: 295, read: true}, {title: "A Dance of Dragons", author: "G.R.R. Martin", pages: 354, read: false}];
+const myLibrary = [];
 
 const libraryContainer = document.querySelector('.library');
 const newBookBtn = document.querySelector('.new-book-btn');
+const openDialog = document.querySelector('.new-book-dialog');
+const addBookBtn = document.querySelector('.add-btn');
+const closeDialogBtn = document.querySelector('.close-btn');
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -10,7 +13,12 @@ function Book(title, author, pages, read) {
     this.read = Boolean(read);
 };
 
+Book.prototype.readStatus = function() {
+    this.read = !this.read;
+};   
+
 function updateLibrary() {
+    libraryContainer.innerHTML = "";
     myLibrary.forEach(book => {
         let newBook = document.createElement('div');
         newBook.classList.add('book');
@@ -24,24 +32,47 @@ function updateLibrary() {
         removeButton.textContent = 'Remove Book';
         newBook.appendChild(removeButton);
         removeButton.addEventListener('click', (e) => removeBook(e))
+        let readButton = document.createElement('button');
+        readButton.classList.add('read-btn');
+        readButton.textContent = book.read ? 'Not read' : 'Read';
+        readButton.addEventListener('click', (e) => readUpdate(e));
+        newBook.appendChild(readButton);
 });
 };
 
-function removeBook(book){
+function readUpdate(book) {
+    let index = book.target.parentNode.dataset.book;
+    myLibrary[index].readStatus();
+    updateLibrary();
+    
+};
+
+function removeBook(book) {
     let index = book.target.parentNode.dataset.book;
     libraryContainer.removeChild(book.target.parentNode)
     myLibrary.splice(index, 1);
-    console.log(myLibrary);
+    updateLibrary();
 };
 
-function addBook() {
-    
+function addBook(title, author, pages, read) {
     myLibrary.push(new Book(title, author, pages, read));
     updateLibrary();
 };
 
 newBookBtn.addEventListener('click', () => {
-    addBook();     
+    openDialog.showModal();
+});
+
+closeDialogBtn.addEventListener('click', () => {
+    openDialog.close();
+});
+
+addBookBtn.addEventListener('click', () => {
+    let title = document.getElementById('book-title').value;
+    let author = document.getElementById('book-author').value;
+    let pages = document.getElementById('book-pages').value;
+    let read = (document.getElementById('book-isread').checked) ? true : false;
+    addBook(title, author, pages, read);
 });
 
 updateLibrary();
