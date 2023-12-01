@@ -26,7 +26,7 @@ function updateLibrary() {
         newBook.dataset.book = myLibrary.indexOf(book);
         libraryContainer.appendChild(newBook);
         let bookContent = document.createElement('p');
-        bookContent.textContent=`Title: ${book.title}\r\nAuthor: ${book.author}\r\nPages: ${book.pages}\r\n Status: ${book.read ? "Read" : "Not read yet"}`;
+        bookContent.textContent=`Title: ${book.title}\r\nAuthor: ${book.author}\r\nPages: ${book.pages}\r\nStatus: ${book.read ? "Read" : "Not read yet"}`;
         newBook.appendChild(bookContent);
         let readButton = document.createElement('button');
         readButton.classList.add('read-btn');
@@ -74,12 +74,12 @@ function clearInput() {
     });
 };
 
-addBookBtn.addEventListener('click', () => {
+function bookInfo() {
     let title = document.getElementById('book-title').value;
     let author = document.getElementById('book-author').value;
     let pages = parseInt(document.getElementById('book-pages').value);
     let read = (document.getElementById('book-isread').checked) ? true : false;
     addBook(title, author, pages, read);
-});
+};
 
 updateLibrary();

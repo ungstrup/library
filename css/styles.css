@@ -188,8 +188,22 @@ form {
     border: none;
 }
 
-.close-btn {
+.close-btn,
+.remove-btn {
     background-color: #333333;
 
     border: #585858 solid 1px;
+}
+
+.read-btn,
+.remove-btn {
+    width: 100px;
+    height: 25px;
+
+    border-radius: 7px;
+}
+
+.read-btn {
+    margin-right: 20px;
+    border: none;
 }

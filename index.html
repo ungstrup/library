@@ -24,7 +24,7 @@
         <div>
             <dialog class="new-book-dialog">
                 <p>Add a new book to your library:</p>
-                <form method="dialog">
+                <form id="new-book-form" method="dialog" onsubmit="bookInfo()">
                     <label class="input-label" for="book-title">Book title:
                         <input type="text" name="book-title" id="book-title" required>
                     </label>
@@ -32,7 +32,7 @@
                         <input type="text" name="book-author" id="book-author" required>
                     </label>
                     <label class="input-label" for="book-pages">Number of pages:
-                        <input type="number" name="book-pages" id="book-pages" min="1" required>
+                        <input type="number" name="book-pages" id="book-pages" min="1" max="10000" required>
                     </label>
                     <fieldset>
                         <legend>Have you read the book?</legend>
@@ -44,7 +44,7 @@
                         </div>
                     </fieldset>
                     <div class="form-btns">
-                        <button class="add-btn">Add book</button>
+                        <button type="submit" class="add-btn">Add book</button>
                         <button type="button" class="close-btn">Close</button>
                     </div>
                     
