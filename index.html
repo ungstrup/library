@@ -8,45 +8,49 @@
     <script src="js/script.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="head-container">
-            <h1 class="title">Books in your library</h1>
+    <header class="head-container">
+        <div>
+            <h1 class="title">Books in your library:</h1>
         </div>
+        <div class="head-divider"></div>
     </header> 
-    <div class="head-divider"></div>
-    <div class="library"></div>
-    <div class="button-container">
-        <button class="new-book-btn btn">NEW BOOK</button>
-    </div>
-    <div>
-        <dialog class="new-book-dialog">
-            <p>Add a new book to your library:</p>
-            <form method="dialog">
-                <label for="book-title">Book title:
-                    <input type="text" name="book-title" id="book-title" required>
-                </label>
-                <label for="book-author">Author:
-                    <input type="text" name="book-author" id="book-author" required>
-                </label>
-                <label for="book-pages">Number of pages:
-                    <input type="number" name="book-pages" id="book-pages" required>
-                </label>
-                <fieldset>
-                    <legend>Have you read the book?</legend>
-                    <div>
-                        <input type="radio" name="book-read" id="book-isread" value="{{true}}">
-                        <label for="book-isread">Yes</label>
-                        <input type="radio" name="book-read" id="book-notread" value="{{false}}">
-                        <label for="book-notread">No</label>
+    <main>
+        <div class="library"></div>
+    </main>
+    <footer>
+        <div class="button-container">
+            <button type="button" class="new-book-btn btn">NEW BOOK</button>
+        </div>
+        <div>
+            <dialog class="new-book-dialog">
+                <p>Add a new book to your library:</p>
+                <form method="dialog">
+                    <label class="input-label" for="book-title">Book title:
+                        <input type="text" name="book-title" id="book-title" required>
+                    </label>
+                    <label class="input-label" for="book-author">Author:
+                        <input type="text" name="book-author" id="book-author" required>
+                    </label>
+                    <label class="input-label" for="book-pages">Number of pages:
+                        <input type="number" name="book-pages" id="book-pages" min="1" required>
+                    </label>
+                    <fieldset>
+                        <legend>Have you read the book?</legend>
+                        <div> 
+                            <input type="radio" name="book-read" id="book-notread" checked>
+                            <label class="radio-label" for="book-notread">No</label>
+                            <input type="radio" name="book-read" id="book-isread"> 
+                            <label class="radio-label" for="book-isread">Yes</label>
+                        </div>
+                    </fieldset>
+                    <div class="form-btns">
+                        <button class="add-btn">Add book</button>
+                        <button type="button" class="close-btn">Close</button>
                     </div>
-                </fieldset>
-                <div class="form-btns">
-                    <button class="add-btn">Add book</button>
-                    <button class="close-btn">Close</button>
-                </div>
-                
-            </form>
-        </dialog>
-    </div>
+                    
+                </form>
+            </dialog>
+        </div>
+    </footer>  
 </body>
 </html>

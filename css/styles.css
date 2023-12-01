@@ -1,63 +1,104 @@
-* {
-    color: #fff;
+@font-face {
+    font-family: roboto-regular;
+    src: url(../fonts/roboto-regular-webfont.woff);
+}
 
+* {
     margin: 0px;
 }
 
 html {
+    font-family: roboto-regular, sans-serif;
+}
+
+body {
+    color: #fff;
+}
+
+header, 
+main,
+footer {
+    width: 100%;
+}
+
+header {
     background-color: #252525;
+
+    position: fixed;
+    top: 0;
+    height: 70px;
 }
 
 p {
     white-space: pre;
 }
 
-.head-container {
-    margin: 10px 20px;
+main {
+    margin-top: 70px;
+    min-height: calc(100vh - 115px);
+    
+    background-color: #333333;
+    overflow: auto;
 }
 
-.head-divider {
-    background-color: #585858;
-
-    height: 1px;
-    width: 100%;
-
+.title {
+    margin: 10px 20px;
 }
 
 .library {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 260px));
+    gap: 30px;
+    justify-items: center;
 
-    width: 100%;
-
-    margin: 20px;
-
+    margin: 40px 20px;
 }
 
 .book {
-    background-color: #16a34a;
+    background-color: #fde5b2;
+
+    color: #252525;
 
     border-radius: 5px;
     padding: 15px;
 
     line-height: 2em;
 
-    width: 200px;
-    aspect-ratio: 1 / 1.2;
+    width: 230px;
+}
+
+footer {
+    background-color: #333333;
+
+    position: relative;
+
+    bottom: 0;
+    height: 45px;
+}
+
+button {
+    color: #fff;
 }
 
 .new-book-btn {
-    margin-top: 30px;
+    position: fixed;
+    bottom: 20px;
     margin-left: 20px;
     
     max-width: 150px;
     width: 30vw;
     height: 5vh;
 
-    background-color: #2dd4bf;
+    background-color: #16a34a;
+    font-weight: bold;
+
     border: none;
     border-radius: 8px;
+}
+
+.new-book-btn,
+.book {
+    box-shadow: 5px 5px 10px #252525;
 }
 
 dialog {
@@ -66,7 +107,7 @@ dialog {
     border: #585858 solid 1px;
     border-radius: 8px;
 
-    width: 500px;
+    color: #fff;
 
     margin: auto;
 }
@@ -76,7 +117,7 @@ dialog p {
     font-weight: bold;
 }
 
-label {
+.input-label {
     display: inline-block;
     width: 200px;
 }
@@ -86,15 +127,39 @@ input {
     border: none;
     border-radius: 4px;
 
-    height: 20px;
+    outline: none;
+    
+    font-size: 1em;
+
+    height: 25px;
 
     padding-left: 5px;
 
     color: #252525;
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"], 
+input[type="number"],
+fieldset {
     width: 300px;
+}
+
+input[type="radio"]{
+    margin-right: 10px;
+}
+
+.radio-label {
+    margin-right: 20px;
+}
+
+.radio-label,
+input[type="radio"] {
+    display: inline-block;
+    vertical-align: top;
+}
+
+fieldset {
+    padding: 2px;
 }
 
 form {
@@ -118,7 +183,7 @@ form {
 }
 
 .add-btn {
-    background-color: #2dd4bf;
+    background-color: #16a34a;
 
     border: none;
 }
