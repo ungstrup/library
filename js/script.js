@@ -1,4 +1,8 @@
-const myLibrary = [];
+let myLibrary = [];
+
+if (localStorage.getItem("library") != null) JSON.parse(localStorage.getItem("library")).forEach(item => {
+    myLibrary.push(new Book(item.title, item.author, item.pages, item.read));
+});
 
 const libraryContainer = document.querySelector('.library');
 const newBookBtn = document.querySelector('.new-book-btn');
@@ -25,33 +29,53 @@ function updateLibrary() {
         newBook.classList.add('book');
         newBook.dataset.book = myLibrary.indexOf(book);
         libraryContainer.appendChild(newBook);
-        let bookContent = document.createElement('p');
-        bookContent.textContent=`Title: ${book.title}\r\nAuthor: ${book.author}\r\nPages: ${book.pages}\r\nStatus: ${book.read ? "Read" : "Not read yet"}`;
-        newBook.appendChild(bookContent);
-        let readButton = document.createElement('button');
-        readButton.classList.add('read-btn');
-        readButton.textContent = book.read ? 'Not read' : 'Read';
-        readButton.addEventListener('click', (e) => readUpdate(e));
-        newBook.appendChild(readButton);
-        let removeButton = document.createElement('button');
-        removeButton.classList.add('remove-btn');
-        removeButton.textContent = 'Remove Book';
-        newBook.appendChild(removeButton);
-        removeButton.addEventListener('click', (e) => removeBook(e))
+        generateContent(book, newBook);
+        readBtn(newBook);
+        removeBtn(newBook);
 });
+    localStorage.setItem("library", JSON.stringify(myLibrary));
 };
 
-function readUpdate(book) {
+function generateContent (book, content) {
+    let keys = Object.keys(book);
+        for (let i = 0; i < 4; i++) {
+            let bookContent = document.createElement('p');
+            if (keys[i] === "read") {
+                bookContent.textContent=`Status: ${book[keys[i]] ? "Read" : "Not read yet"}`;
+            } else {
+            bookContent.textContent=`${keys[i].charAt(0).toUpperCase() + keys[i].slice(1)}: ${book[keys[i]]}`;
+            };
+            bookContent.classList.add(`book-${keys[i]}`);
+            content.appendChild(bookContent);
+        }
+}
+
+function readUpdate (book) {
     let index = book.target.parentNode.dataset.book;
     myLibrary[index].readStatus();
     updateLibrary();
-    
+};
+
+function readBtn (book) {
+    let readButton = document.createElement('button');
+        readButton.classList.add('read-btn');
+        readButton.textContent = 'Read status';
+        readButton.addEventListener('click', (e) => readUpdate(e));
+        book.appendChild(readButton);
 };
 
 function removeBook(book) {
     let index = book.target.parentNode.dataset.book;
     myLibrary.splice(index, 1);
     updateLibrary();
+};
+
+function removeBtn (book) {
+    let removeButton = document.createElement('button');
+        removeButton.classList.add('remove-btn');
+        removeButton.textContent = 'Remove Book';
+        book.appendChild(removeButton);
+        removeButton.addEventListener('click', (e) => removeBook(e))
 };
 
 function addBook(title, author, pages, read) {

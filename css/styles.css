@@ -55,7 +55,7 @@ main {
 }
 
 .book {
-    background-color: #fde5b2;
+    background-color: #f0ece2;
 
     color: #252525;
 
@@ -182,7 +182,8 @@ form {
     font-weight: bold;
 }
 
-.add-btn {
+.add-btn,
+.read-btn {
     background-color: #16a34a;
 
     border: none;
@@ -206,4 +207,8 @@ form {
 .read-btn {
     margin-right: 20px;
     border: none;
+}
+
+button:hover {
+    cursor: pointer;
 }
