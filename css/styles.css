@@ -30,7 +30,7 @@ header {
 }
 
 p {
-    white-space: pre;
+    word-wrap: break-word;
 }
 
 main {
@@ -65,6 +65,24 @@ main {
     line-height: 2em;
 
     width: 230px;
+
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+[class^="book-"] {
+    font-weight: bold;
+    grid-column: 1 / span 1;
+}
+
+[class^="book-"] + p {
+    grid-column: 2 / span 1;
+}
+
+.book div {
+    grid-column: 1 / span 2;
+    justify-self: center;
+    align-self: self-end;
 }
 
 footer {

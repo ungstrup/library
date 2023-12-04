@@ -30,8 +30,10 @@ function updateLibrary() {
         newBook.dataset.book = myLibrary.indexOf(book);
         libraryContainer.appendChild(newBook);
         generateContent(book, newBook);
-        readBtn(newBook);
-        removeBtn(newBook);
+        let buttonContainer = document.createElement('div')
+        newBook.appendChild(buttonContainer);
+        readBtn(buttonContainer);
+        removeBtn(buttonContainer);
 });
     localStorage.setItem("library", JSON.stringify(myLibrary));
 };
@@ -39,19 +41,23 @@ function updateLibrary() {
 function generateContent (book, content) {
     let keys = Object.keys(book);
         for (let i = 0; i < 4; i++) {
+            let bookDescription = document.createElement('p');
             let bookContent = document.createElement('p');
             if (keys[i] === "read") {
-                bookContent.textContent=`Status: ${book[keys[i]] ? "Read" : "Not read yet"}`;
+                bookDescription.textContent=`Status: `
+                bookContent.textContent=`${book[keys[i]] ? "Read" : "Not read yet"}`;
             } else {
-            bookContent.textContent=`${keys[i].charAt(0).toUpperCase() + keys[i].slice(1)}: ${book[keys[i]]}`;
+                bookDescription.textContent=`${keys[i].charAt(0).toUpperCase() + keys[i].slice(1)}: `
+                bookContent.textContent=`${book[keys[i]]}`;
             };
-            bookContent.classList.add(`book-${keys[i]}`);
+            bookDescription.classList.add(`book-${keys[i]}`);
+            content.appendChild(bookDescription);
             content.appendChild(bookContent);
         }
 }
 
 function readUpdate (book) {
-    let index = book.target.parentNode.dataset.book;
+    let index = book.target.parentNode.parentNode.dataset.book;
     myLibrary[index].readStatus();
     updateLibrary();
 };
